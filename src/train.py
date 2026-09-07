@@ -23,7 +23,7 @@ print("Dataset loaded:", data.shape)
 # -----------------------------
 # 2. Feature engineering
 # -----------------------------
-data["MA5"] = data["Close"].rolling(window=5).mean()
+data["MA5"] = (data["Close"].rolling(window=5).mean() - data["Close"].mean()) / data["Close"].std()
 data["MA10"] = data["Close"].rolling(window=10).mean()
 
 # Target: next day's closing price
